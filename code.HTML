@@ -1,0 +1,77 @@
+# Student Record System
+
+students = {}
+
+# Function to add student
+def add_student():
+    roll = input("Enter Student ID: ")
+    if roll in students:
+        print("Student already exists!")
+        return
+    name = input("Enter Name: ")
+    age = input("Enter Age: ")
+    grade = input("Enter Grade: ")
+
+    students[roll] = {
+        "name": name,
+        "age": age,
+        "grade": grade
+    }
+    print("Student added successfully!\n")
+
+# Function to search student
+def search_student():
+    roll = input("Enter Student ID to search: ")
+    if roll in students:
+        print("Student Found:")
+        print("Name:", students[roll]["name"])
+        print("Age:", students[roll]["age"])
+        print("Grade:", students[roll]["grade"])
+    else:
+        print("Student not found!\n")
+
+# Function to update student
+def update_student():
+    roll = input("Enter Student ID to update: ")
+    if roll in students:
+        print("1. Update Name")
+        print("2. Update Age")
+        print("3. Update Grade")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            students[roll]["name"] = input("Enter new name: ")
+        elif choice == "2":
+            students[roll]["age"] = input("Enter new age: ")
+        elif choice == "3":
+            students[roll]["grade"] = input("Enter new grade: ")
+        else:
+            print("Invalid choice!")
+            return
+
+        print("Record updated successfully!\n")
+    else:
+        print("Student not found!\n")
+
+# Main program loop
+while True:
+    print("===== Student Record System =====")
+    print("1. Add Student")
+    print("2. Search Student")
+    print("3. Update Student")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        search_student()
+    elif choice == "3":
+        update_student()
+    elif choice == "4":
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.\n")
